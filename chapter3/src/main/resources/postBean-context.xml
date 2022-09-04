@@ -1,0 +1,30 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--<bean class="com.kirill.classes.PostBean.Fudiffer"/>-->
+
+    <bean id="propertyConfigurer"
+          class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="location" value="property/jdbc.properties" />
+    </bean>
+    <bean id="dataSource"
+          class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="url" value="${database.url}" />
+        <property name="driverClassName"
+                  value="${database.driver}" />
+        <property name="username"
+                  value="${database.user}" />
+        <property name="password"
+                  value="${database.password}" />
+    </bean>
+    <bean id="vocalist" class="com.kirill.classes.Vocalist">
+        <property name="song"
+                  value="Ебал их всех. Рэпер и блогер как Моргенштерн. Твой кадилак въебал об столб, твой мерин  мне как брелок"/>
+    </bean>
+
+    <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource/">
+        <property name="baseName" value="traningText"/>
+    </bean>
+</beans>

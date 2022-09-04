@@ -1,0 +1,21 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean class="org.springframework.beans.factory.config.CustomEditorConfigurer">
+        <property name="customEditors">
+            <map>
+                <entry key="com.kirill.classes.customEditors.PhoneNumber" value="com.kirill.classes.customEditors.PhoneEditor">
+
+                </entry>
+
+            </map>
+        </property>
+    </bean>
+
+    <bean id="phoneEditor" class="com.kirill.classes.customEditors.PhoneEditor"/>
+    <bean id="contact" class="com.kirill.classes.customEditors.Contact">
+        <property name="phoneNumber" value="111-222-1234"/>
+    </bean>
+</beans>

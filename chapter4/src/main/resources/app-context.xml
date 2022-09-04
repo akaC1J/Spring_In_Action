@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+       <!-- default-autowire="byType"-->
+
+    <!--<context:annotation-config />-->
+    <context:component-scan base-package="basePackage">
+        <context:include-filter type="assignable" expression="basePackage.Instrument"/>
+    </context:component-scan>
+    <!--<bean id="kenny2"
+          class="basePackage.Instrumentalist">
+        <property name="instrument" ref="guitar"/>
+        <property name="song" value="Jingle Bells" />
+    </bean>-->
+
+    <!--<bean id="kenny3"
+          class="basePackage.Instrumentalist">
+        <property name="song" value="Мой кайф"/>
+    </bean>-->
+
+    <bean id="duke"
+          class="basePackage.PoeticJuggler"
+          autowire="constructor" />
+
+    <!--<bean id="guitar" class="basePackage.Guitar"/>-->
+    <bean id="drum" class="basePackage.Drums"/>
+    <bean id="sonnet29" class="basePackage.Sonnet29"/>
+
+    <!--<bean id="guitar" class="basePackage.Guitar">
+        <qualifier value="stringed"/>
+    </bean>-->
+
+    <bean class="basePackage.Vocalist"/>
+
+    <!--<bean class="basePackage.KnifeJuggler"/>
+    <bean class="basePackage.Knife" scope="prototype"/>-->
+
+
+</beans>

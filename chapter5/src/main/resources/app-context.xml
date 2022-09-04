@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+         https://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:component-scan base-package="basePackage">
+        <context:include-filter type="assignable" expression="basePackage.Instrument"/>
+        <context:exclude-filter type="assignable" expression="basePackage.Config.ConfigurationSpring"/>
+    </context:component-scan>
+
+
+    <!--Листинг 5.3
+    <aop:config>
+        <aop:aspect ref="audience">
+            <aop:pointcut id="performance" expression="execution(* basePackage.Performer.perform(..))"/>
+            <aop:before method="takeSeats" pointcut-ref="performance"/>
+            <aop:before method="turnOffCellPhones"  pointcut-ref="performance"/>
+            <aop:after-returning method="applaud"  pointcut-ref="performance"/>
+            <aop:after-throwing method="demandRefund" pointcut-ref="performance"/>
+        </aop:aspect>
+    </aop:config>-->
+
+    <!--Листинг 5.5-->
+    <!--<aop:config>
+        <aop:aspect ref="audience">
+            <aop:pointcut id="performance" expression="execution(* basePackage.Performer.perform(..))"/>
+            <aop:around method="watchPerformance" pointcut-ref="performance"/>
+        </aop:aspect>
+    </aop:config>-->
+
+    <!--_____-->
+    <!--<aop:config>
+        <aop:aspect ref="magician">
+            <aop:pointcut id="thinking" expression="execution(* basePackage.MindReaderAndThinking.Thinker.thinkOfSomething(String)) and args(thoughts)"/>
+            <aop:before pointcut-ref="thinking" method="interceptThoughts" arg-names="thoughts"/>
+        </aop:aspect>
+    </aop:config>-->
+
+    <!--5.3-->
+    <!--<aop:config>
+        <aop:aspect ref="audience">
+            <aop:declare-parents
+                    types-matching="basePackage.Performer+"
+                    implement-interface="basePackage.Contestant.Contestant"
+                    delegate-ref="contestantImpl"/>
+            <aop:pointcut id="performance" expression="execution(* basePackage.Performer.perform(..))"/>
+            <aop:around method="watchPerformance" pointcut-ref="performance"/>
+        </aop:aspect>
+    </aop:config>-->
+
+    <!--5.4-->
+    <aop:aspectj-autoproxy/>
+
+    <!--не разобрался
+    <bean class="basePackage.aspectJ.JudgeAspect" factory-method="aspectOf">
+        <property name="cr" ref="criticismEngine"/>
+    </bean>
+-->
+
+
+</beans>

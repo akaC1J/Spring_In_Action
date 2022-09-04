@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd"
+       default-init-method="turnOnLights"
+       default-destroy-method="turnOffLights">
+
+
+    <bean id="duke" class="com.kirill.classes.Juggler">
+
+        <constructor-arg value="15"/>
+    </bean>
+    <bean id="sonnet29" class="com.kirill.classes.Sonnet29"/>
+    <bean id="poeticDuke" class="com.kirill.classes.PoeticJuggler">
+        <constructor-arg value="228"/>
+        <constructor-arg>
+            <bean class="com.kirill.classes.Sonnet29"/>
+        </constructor-arg>
+    </bean>
+    <bean id="theStage" class="com.kirill.classes.Stage"
+          factory-method="getInstance"/>
+    <bean id="ticket" class="com.kirill.classes.Ticket" scope="prototype"/>
+    <bean id="auditorium"
+          class="com.kirill.classes.Auditorium"
+    />
+
+   <!-- <bean id="kenny" class="com.kirill.classes.Instrumentalist"
+          p:instrument-ref="guitar">
+        <property name="song" value="Мой кайф"/>
+    </bean>
+
+    <bean id="bart" class="com.kirill.classes.Instrumentalist">
+        <property name="song" value="Мой кайф"/>
+        <property name="instrument" ref="guitar"/>
+    </bean>-->
+
+    <bean id="baseGuitarist" class="com.kirill.classes.Instrumentalist" abstract="true">
+        <property name="song" value="Мой кайф"/>
+        <property name="instrument" ref="guitar"/>
+    </bean>
+
+    <bean id="kenny" parent="baseGuitarist"/>
+    <bean id="david" parent="baseGuitarist"/>
+    <bean id="franl" parent="baseGuitarist">
+        <property name="song" value="Малиновый закат"/>
+    </bean>
+
+    <!--<bean id="taylor" class="com.kirill.classes.Vocalist" parent="basePeformer"/>
+    <bean id="steve" class="com.kirill.classes.Instrumentalist" parent="basePerformer">
+        <property name="instrument" ref="drums"/>
+    </bean>
+-->
+
+    <bean id="homer" class="com.kirill.classes.OneManBand">
+        <property name="instruments">
+            <map>
+                <entry key="GUITAR" value-ref="guitar"/>
+                <entry key="DRUMS" value-ref="drums"/>
+            </map>
+        </property>
+    </bean>
+
+    <bean id="guitar" class="com.kirill.classes.Guitar"/>
+    <bean id="drums" class="com.kirill.classes.Drums"/>
+
+    <bean id="magicBox" class="com.kirill.classes.MagicBoxImpl">
+        <replaced-method name="getContents" replacer="tigerReplacer"/>
+    </bean>
+    <bean id="tigerReplacer" class="com.kirill.classes.TigerReplacer"/>
+    <bean id="harry" class="com.kirill.classes.Magician">
+        <property name="magicBox" ref="magicBox"/>
+        <property name="magicWords" value="Биппити баппити бу"/>
+    </bean>
+
+    <bean id="stevie" class="com.kirill.classes.Instrumentalist2">
+        <lookup-method bean="guitar" name="getInstrument"/>
+        <property name="song" value="Малиновый закат"/>
+    </bean>
+
+    <bean id="pianist" class="com.kirill.classes.Instrumentalist"
+          abstract="true">
+        <property name="song" value="Девочка в классе"/>
+        <property name="instrument">
+            <bean class="com.kirill.classes.Piano"/>
+        </property>
+    </bean>
+
+
+    
+    <bean id="testSpEL" class="com.kirill.classes.TestSpEL">
+        <property name="asInt" value="#{T(Math).random()*100}"/>
+        <property name="asString" value="#{guitar.name.toUpperCase()}"/>
+    </bean>
+</beans>
