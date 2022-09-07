@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DdlMappings">
+    <mapping uuid="5acc6f1f-eb60-4211-9060-ba79fc00e1f3" name="H2 (DDL) Mapping">
+      <data-sources ddl="c5c12974-e89e-4845-8a8a-7697e321e545" />
+    </mapping>
+  </component>
+</project>

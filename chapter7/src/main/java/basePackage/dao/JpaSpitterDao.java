@@ -4,14 +4,13 @@ import basePackage.model.Spitter;
 import basePackage.model.Spittle;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.transaction.Transactional;
 import java.util.List;
 
-@Repository("jpaSpitterDao")
-@Transactional
+@Repository
 public class JpaSpitterDao implements SpitterDao {
     private static final String RECENT_SPITTLES =
             "SELECT s FROM Spittle s";
@@ -22,17 +21,15 @@ public class JpaSpitterDao implements SpitterDao {
     private static final String SPITTLES_BY_USERNAME =
             "SELECT s FROM Spittle s WHERE s.spitter.username = :username";
 
-    @PersistenceContext
+    @PersistenceContext(unitName = "entityManagerFactory")
     private EntityManager em; //<co id="co_injectEM"/>
-
+    @Override
     public void saveSpitter(Spitter spitter) {
         em.persist(spitter); //<co id="co_useEM"/>
     }
 
     public void updateSpitter(Spitter spitter) {
-        em.getTransaction().begin();
         em.merge(spitter); //<co id="co_useEM"/>
-        em.getTransaction().commit();
     }
 
     @Override

@@ -2,6 +2,7 @@ package basePackage.dao;
 
 import basePackage.model.Spitter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcDaoSupport;
 import org.springframework.stereotype.Component;
 
@@ -61,6 +62,7 @@ public class SpitterDaoImplWithTempl extends NamedParameterJdbcDaoSupport implem
     }
 
     @Autowired
+    @Qualifier("dataSourcePostgres")
     private void setDS(DataSource dataSource){
         setDataSource(dataSource);
     }

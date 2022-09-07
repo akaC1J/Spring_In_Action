@@ -14,7 +14,7 @@
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
-    </properties>`
+    </properties>
 
     <dependencies>
         <dependency>
@@ -35,6 +35,11 @@
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
+            <artifactId>spring-aspects</artifactId>
+            <version>5.3.16</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
             <version>5.3.20</version>
             <scope>compile</scope>
@@ -42,7 +47,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-beans</artifactId>
-            <version>5.3.18</version>
+            <version>5.3.20</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
@@ -55,18 +60,15 @@
             <artifactId>h2</artifactId>
             <version>2.1.212</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
             <version>5.6.8.Final</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.springframework/spring-orm -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-orm</artifactId>
             <version>5.3.19</version>
         </dependency>
-
     </dependencies>
 </project>

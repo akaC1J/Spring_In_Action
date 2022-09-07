@@ -2,6 +2,8 @@
 <project version="4">
   <component name="SqlDialectMappings">
     <file url="file://$PROJECT_DIR$/chapter7/src/main/java/basePackage/dao/SpitterDaoImplWithTempl.java" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/sql_scripts/SPITTER.sql" dialect="PostgreSQL" />
+    <file url="file://$PROJECT_DIR$/sql_scripts/SPITTLE.sql" dialect="PostgreSQL" />
     <file url="PROJECT" dialect="H2" />
   </component>
 </project>

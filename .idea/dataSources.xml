@@ -8,5 +8,12 @@
       <jdbc-url>jdbc:h2:tcp://localhost/~/Database_H2/Spitter</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
+    <data-source source="LOCAL" name="SPITTER@194.87.144.153" uuid="2b6acfd8-14c8-47c6-b9f9-00bea08ca075">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://194.87.144.153:5432/SPITTER</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
   </component>
 </project>

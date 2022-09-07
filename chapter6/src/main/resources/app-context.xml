@@ -64,10 +64,10 @@
     </bean>
 
     <bean id="jpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
-        <property name="database" value="H2"/>
+        <property name="database" value="SPITTER"/>
         <property name="showSql" value="true"/>
         <property name="generateDdl" value="true"/>
-        <property name="databasePlatform" value="org.hibernate.dialect.H2Dialect"/>
+        <property name="databasePlatform" value="org.hibernate.dialect.PostgresPlusDialect"/>
 
     </bean>
 
