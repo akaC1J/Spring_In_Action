@@ -3,7 +3,6 @@ package basePackage.model;
 
 import javax.persistence.*;
 
-
 @Entity
 public class Spitter {
 

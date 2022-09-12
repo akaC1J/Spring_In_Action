@@ -1,28 +1,17 @@
 import basePackage.config.A;
 import basePackage.config.Config;
 import basePackage.dao.HibernateSpitterDao;
-import basePackage.dao.JpaSpitterDao;
 import basePackage.dao.SpitterDao;
 import basePackage.dao.SpitterDaoImplWithTempl;
 import basePackage.model.Spitter;
-import org.hibernate.SessionFactory;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.context.support.FileSystemXmlApplicationContext;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
-import org.springframework.orm.jpa.JpaTransactionManager;
-import org.springframework.transaction.PlatformTransactionManager;
-import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.TransactionCallback;
 import org.springframework.transaction.support.TransactionTemplate;
-
-import javax.transaction.Transactional;
-import java.net.InetAddress;
-import java.nio.file.Files;
 
 public class TestClass7 {
     ApplicationContext ctx;
@@ -35,7 +24,7 @@ public class TestClass7 {
         ctx = parent;
     }
 
-    private void setJDBCtoDao(){
+    private void setJDBCtoDao() {
         spitterDao = ctx.getBean(SpitterDaoImplWithTempl.class);
 
     }
@@ -48,12 +37,12 @@ public class TestClass7 {
         spitterDao = (SpitterDao) ctx.getBean("jpaSpitterDao");
     }
 
-    private void fakeException(){
+    private void fakeException() {
         throw new RuntimeException();
     }
 
     @Test
-    public void JdbcTransaction_7_2_1(){
+    public void JdbcTransaction_7_2_1() {
         DataSourceTransactionManager dataSourceTransactionManager = ctx.getBean(DataSourceTransactionManager.class);
         setHibernateDao();
         TransactionTemplate template = new TransactionTemplate(dataSourceTransactionManager);
@@ -71,7 +60,7 @@ public class TestClass7 {
     }
 
     @Test
-    public void HibernateTransaction_7_2_2(){
+    public void HibernateTransaction_7_2_2() {
         HibernateTransactionManager hibernateTransactionManager = ctx.getBean(HibernateTransactionManager.class);
         setJDBCtoDao();
         TransactionTemplate template = new TransactionTemplate(hibernateTransactionManager);
@@ -89,9 +78,9 @@ public class TestClass7 {
     }
 
     @Test
-    public void JpaTransaction_7_2_3(){
+    public void JpaTransaction_7_2_3() {
         setJpaDao();
-        ((TransactionTemplate)ctx.getBean("transactionTemplate")).execute((TransactionCallback<Object>) status -> {
+        ((TransactionTemplate) ctx.getBean("transactionTemplate")).execute((TransactionCallback<Object>) status -> {
             Spitter spitter = spitterDao.getSpitterById(1);
             System.out.println(spitter);
             spitter.setPassword("C");
@@ -104,10 +93,24 @@ public class TestClass7 {
             return spitter;
         });
     }
-@Test
+
+    @Test
     public void xmlTransaction_7_4_2() {
         setJpaDao();
-    Spitter spitter = new Spitter();
+        Spitter spitter = new Spitter();
+
+        spitter.setFullName("Peter");
+        spitter.setEmail("peter@gmail.com");
+        spitter.setPassword("asp2");
+        spitter.setUsername("Spidy");
+        spitter.setUpdateByEmail(false);
+        spitterDao.saveSpitter(spitter);
+    }
+
+    @Test
+    public void annotationTransaction_7_4_3() {
+        setJpaDao();
+        Spitter spitter = new Spitter();
 
         spitter.setFullName("Peter");
         spitter.setEmail("peter@gmail.com");

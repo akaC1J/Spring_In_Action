@@ -4,10 +4,10 @@ import basePackage.model.Spitter;
 import basePackage.model.Spittle;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.transaction.Transactional;
 import java.util.List;
 
 @Repository("jpaSpitterDao")

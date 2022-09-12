@@ -3,12 +3,9 @@ package basePackage.model;
 import com.sun.istack.NotNull;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
-
-import static javax.persistence.GenerationType.AUTO;
-
-import javax.persistence.*;
 
 @Entity
 @Table(name="SPITTLE")
@@ -16,7 +13,7 @@ public class Spittle implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @ManyToOne

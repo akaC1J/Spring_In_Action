@@ -16,7 +16,6 @@ import org.springframework.orm.jpa.vendor.Database;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.support.TransactionTemplate;
 
-import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 import java.io.IOException;
@@ -24,7 +23,7 @@ import java.util.Properties;
 
 @Configuration
 @ComponentScan("basePackage")
-@ImportResource("classpath:app-context.xml")
+@ImportResource("classpath:app-context-txAnnotation.xml")
 public class Config {
 
     @Bean

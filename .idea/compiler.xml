@@ -10,6 +10,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="chapter7" />
+        <module name="chapter8_MVC" />
         <module name="chapter6" />
         <module name="chapter5" />
         <module name="chapter4" />

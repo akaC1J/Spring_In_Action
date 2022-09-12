@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class Spitter {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.TABLE)
     private Long id;
 
 
