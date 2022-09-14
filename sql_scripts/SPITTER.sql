@@ -1,0 +1,17 @@
+create table SPITTER
+(
+    ID              SERIAL PRIMARY KEY ,
+    USERNAME        CHARACTER VARYING(100),
+    FULL_NAME       CHARACTER VARYING(100),
+    PASSWORD        CHARACTER VARYING(100),
+    EMAIL           CHARACTER VARYING(200),
+    UPDATE_BY_EMAIL BOOLEAN default FALSE
+
+);
+
+create unique index SPITTER_ID_UINDEX
+    on SPITTER (ID);
+
+INSERT INTO SPITTER (ID, USERNAME, FULL_NAME, PASSWORD, EMAIL, UPDATE_BY_EMAIL) VALUES (1, 'akaS1j', 'Kirill', 'secondTran', 'kirill@gmail.com', true);
+INSERT INTO SPITTER (ID, USERNAME, FULL_NAME, PASSWORD, EMAIL, UPDATE_BY_EMAIL) VALUES (2, 'Beaty', 'Sonya', 'pass', 'sonya@gmail.com', false);
+INSERT INTO SPITTER (ID, USERNAME, FULL_NAME, PASSWORD, EMAIL, UPDATE_BY_EMAIL) VALUES (3, 'Manka', 'Ilya', 'bkmz', 'ilya99@mail.ru', true);
